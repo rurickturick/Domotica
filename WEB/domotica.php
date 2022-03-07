@@ -64,7 +64,8 @@ class domotica {
 	function get_temperatura ()
 	{
 
-		$query = "select * from temperatura order by 1 desc, 2 desc limit 1";
+		$query = "select t1.fecha,t1.hora,t1.temperatura,t3.desc_localizacion,t4.desc_tipo_sensor from temperatura t1,sensor t2, localizacion t3, tipo_sensor t4 
+                         where t1.id_sensor =t2.id_sensor and t2.id_localizacion = t3.id_localizacion and t2.id_tipo_sensor = t4.id_tipo_sensor order by 1 desc, 2 desc limit 1;";
 
 		$this-> datos = mysqli_query ($this->id_conexion, $query);
          
@@ -76,7 +77,8 @@ class domotica {
 	function get_humedad ()
 	{
 
-		$query = "select * from thumeddad order by 1 desc, 2 desc limit 1";
+		$query = "select t1.fecha,t1.hora,t1.humedad,t3.desc_localizacion,t4.desc_tipo_sensor from humedad t1,sensor t2, localizacion t3, tipo_sensor t4
+                           where t1.id_sensor =t2.id_sensor and t2.id_localizacion = t3.id_localizacion and t2.id_tipo_sensor = t4.id_tipo_sensor order by 1 desc, 2 desc limit 1;";
 
 		$this-> datos = mysqli_query ($this->id_conexion, $query);
          
@@ -84,4 +86,3 @@ class domotica {
         return $this->datos;
        }
 }
-?>

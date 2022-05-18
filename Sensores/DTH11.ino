@@ -1,14 +1,15 @@
 #include "DHT.h"
-#define DHTPIN 5
+#define DHTPIN 14
 #include <NTPClient.h> 
 #include <ESP8266WiFi.h> 
 #include <WiFiUdp.h>
+
 #define DHTTYPE DHT11  
 
-const char *ssid     = ""; // la red a la que queremos conectar
-const char *password = ""; // la contraseña de la red
+const char *ssid     = "";
+const char *password = "";
 WiFiUDP ntpUDP;
-NTPClient timeClient(ntpUDP, "hora.roa.es",3600,6000);
+NTPClient timeClient(ntpUDP, "hora.roa.es",7200,6000);//3600 ó bien 7200
 
 DHT dht(DHTPIN, DHTTYPE);
 void setup() {

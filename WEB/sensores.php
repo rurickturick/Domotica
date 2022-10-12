@@ -7,7 +7,6 @@ require_once 'domotica.php';
         $info = $_GET['info'];
         $id_sensor = $_GET['id_sensor'];
 
-
 	$domotica= new domotica();
         if ( $id_sensor == '1' || $id_sensor == '3' )
         {

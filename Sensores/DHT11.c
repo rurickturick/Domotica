@@ -118,14 +118,12 @@ int main( void )
            strftime(hora,100,"%X",tm);
            sprintf(info_temp,"%d.%d",dht11_dat[2], dht11_dat[3]);
            sprintf(info_hum,"%d.%d",dht11_dat[0], dht11_dat[1]);
-           //printf("Fecha: %s",fecha);
-           //printf("Hora: %s",hora);
+
            //Send some Data
           sprintf(message_temp, "GET /sensores.php?fecha=%s&hora=%s&info=%s&id_sensor=%d HTTP/1.1\r\nHost: 192.168.1.200\r\n\r\n",fecha, hora, info_temp, sensor_te);
           sprintf(message_hum, "GET /sensores.php?fecha=%s&hora=%s&info=%s&id_sensor=%d HTTP/1.1\r\nHost: 192.168.1.200\r\n\r\n",fecha, hora, info_hum, sensor_h);
 
-        //  puts(message_temp);
-        //  puts(message_hum); 
+
           // envio socket temperatura
        if (send(socket_desc, message_temp, strlen (message_temp), 0) < 0 ) {
            puts("Send failed");
@@ -139,8 +137,7 @@ int main( void )
             close(socket_desc);
             return 1;
           }
-          //puts("Reply received \n");
-          //puts(server_reply);         
+
          
          // envio socket humedad
         if (send(socket_desc, message_hum, strlen (message_hum), 0) < 0 ) {
@@ -155,11 +152,8 @@ int main( void )
             close(socket_desc);
             return 1;
           }
-         // puts("Reply received \n");
-         // puts(server_reply);
+ 
            close(socket_desc);
-          // delay( 300000 );
-         //    delay(5000);
          return(0);
          }
         else delay(1000);
